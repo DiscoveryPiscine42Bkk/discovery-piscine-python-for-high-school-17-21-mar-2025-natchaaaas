@@ -1,17 +1,10 @@
-import sys
-if len(sys.argv) > 1:
-    print("none")
-    sys.exit()
+multiplier = 0
+while multiplier <= 10:
+    print(f"Table de  {multiplier}: " , end = "")
 
-table = 0 
-
-while table <= 10: 
-    print(f"Table de {table}:", end=" ")  
-    num = 0
-
-    while num <= 10:
-        print(table * num, end=" ")
-        num += 1
-         
+    current_number = 0
+    while current_number <= 10:
+        print(multiplier * current_number, end = " ")
+        current_number += 1
     print()
-    table += 1
+    multiplier += 1
