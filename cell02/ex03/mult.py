@@ -1,3 +1,4 @@
+#!/bin/python3
 num1 = int(input("please enter your first number"))
 num2 = int(input("please enter your second number"))
 result = num1 * num2
