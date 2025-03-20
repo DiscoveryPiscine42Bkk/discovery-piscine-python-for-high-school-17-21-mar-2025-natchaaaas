@@ -1,0 +1,51 @@
+#!/bin/python3
+def checkmate(board_str):
+    board = [list(row) for row in board_str.split("\n")]
+    size = len(board)
+
+    king_x, king_y = None, None
+    for i in range(size):
+        for j in range(size):
+            if board[i][j] == "K":
+                king_x, king_y = i, j
+                break
+        if king_x is not None:
+            break
+
+    if king_x is None or king_y is None:
+        print("Error: No King found.")
+        return
+
+    directions = {
+        "R": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "B": [(1, 1), (1, -1), (-1, 1), (-1, -1)],
+        "Q": [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (1, -1), (-1, 1), (-1, -1)],
+        "P": [(-1, -1), (-1, 1)]
+    }
+
+    for piece, moves in directions.items():
+        for dx, dy in moves:
+            x, y = king_x + dx, king_y + dy
+            while 0 <= x < size and 0 <= y < size:
+                if board[x][y] == piece:
+                    print("Success")
+                    return
+                elif board[x][y] != ".":
+                    break
+                x += dx
+                y += dy
+
+    print("Fail")
+
+# Test Cases
+board1 = """\
+R...
+.K..
+..P.
+...."""
+checkmate(board1)
+
+board2 = """\
+..
+.K"""
+checkmate(board2)
